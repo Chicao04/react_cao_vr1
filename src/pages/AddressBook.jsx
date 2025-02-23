@@ -43,9 +43,7 @@ const Sidebar = () => {
         </li>
       </ul>
       <hr />
-      <Link to="/" className="nav-link text-danger">
-        <FaSignOutAlt className="me-2" /> Logout
-      </Link>
+      
     </div>
   );
 };
@@ -53,17 +51,34 @@ const Sidebar = () => {
 /** Trang Address Book */
 const AddressBook = () => {
   // Mảng chứa các địa chỉ của người dùng
-  const [addresses, setAddresses] = useState([
+  // const [addresses, setAddresses] = useState([
+  //   {
+  //     fullName: "Hieu Nguyen",
+  //     phoneNumber: "093722837",
+  //     address: "ABC Street",
+  //     postcode: "100000",
+  //     province: "Hanoi",
+  //     district: "",
+  //     ward: "",
+  //   },
+  // ]);
+  const [user, setUser] = useState([
     {
       fullName: "Hieu Nguyen",
-      phoneNumber: "093722837",
+      email: "HieuNguyen@gmail.com",
+      mobile: "0123456789",
+      birthday: "01/01/2000",
+      phoneNumber: "0123456789",
       address: "ABC Street",
       postcode: "100000",
       province: "Hanoi",
       district: "",
       ward: "",
-    },
+      gender: "Female",
+    }
   ]);
+  
+  
 
   /* 
     editingIndex: nếu là số từ 0 đến addresses.length - 1, tức đang chỉnh sửa địa chỉ đó.
@@ -76,12 +91,12 @@ const AddressBook = () => {
   /** Khi nhấn "Edit" trên một dòng địa chỉ */
   const handleEditClick = (index) => {
     setEditingIndex(index);
-    setEditedAddress({ ...addresses[index] });
+    setEditedAddress({ ...user[index] });
   };
 
   /** Khi nhấn "+ ADD NEW ADDRESS" */
   const handleAddNew = () => {
-    setEditingIndex(addresses.length);
+    setEditingIndex(user.length);
     setEditedAddress({
       fullName: "",
       phoneNumber: "",
@@ -92,6 +107,7 @@ const AddressBook = () => {
       ward: "",
     });
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -107,17 +123,17 @@ const AddressBook = () => {
   };
 
   const handleSaveClick = () => {
-    if (editingIndex === addresses.length) {
-
-      setAddresses([...addresses, editedAddress]);
+    if (editingIndex === user.length) {
+      setUser([...user, editedAddress]);
     } else {
-      const updated = [...addresses];
+      const updated = [...user];
       updated[editingIndex] = editedAddress;
-      setAddresses(updated);
+      setUser(updated);
     }
     setEditingIndex(null);
     setEditedAddress(null);
   };
+  
 
   return (
     <>
@@ -163,35 +179,7 @@ const AddressBook = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="address" style={{ fontWeight: "bold" }}>
-                      Address
-                    </label>
-                    <input
-                      type="text"
-                      id="address"
-                      name="address"
-                      className="form-control"
-                      placeholder="Street / Apartment / etc."
-                      value={editedAddress.address}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="mb-3">
-                    <label htmlFor="postcode" style={{ fontWeight: "bold" }}>
-                      Postcode
-                    </label>
-                    <input
-                      type="text"
-                      id="postcode"
-                      name="postcode"
-                      className="form-control"
-                      placeholder="Zip / Postcode"
-                      value={editedAddress.postcode}
-                      onChange={handleChange}
-                    />
-                  </div>
+                  
                 </div>
                 <div style={{ flex: 1 }}>
                   <div className="mb-3">
@@ -281,7 +269,7 @@ const AddressBook = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {addresses.map((item, index) => (
+                  {user.map((item, index) => (
                     <tr key={index}>
                       <td>{item.fullName}</td>
                       <td>{item.address}</td>

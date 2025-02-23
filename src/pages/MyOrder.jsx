@@ -52,9 +52,7 @@ const Sidebar = () => {
         </li>
       </ul>
       <hr />
-      <Link to="/" className="nav-link text-danger">
-        <FaSignOutAlt className="me-2" /> Logout
-      </Link>
+      
     </div>
   );
 };

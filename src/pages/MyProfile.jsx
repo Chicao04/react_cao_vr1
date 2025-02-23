@@ -47,9 +47,7 @@ const Sidebar = () => {
         </li>
       </ul>
       <hr />
-      <Link to="/" className="nav-link text-danger">
-        <FaSignOutAlt className="me-2" /> Logout
-      </Link>
+      
     </div>
   );
 };
@@ -59,11 +57,15 @@ const MyProfile = () => {
   const [user, setUser] = useState({
     fullName: "Hieu Nguyen",
     email: "HieuNguyen@gmail.com",
-    mobile: "093722837",
-    birthday: "2000-01-01", 
-    gender: "Female",
-  });
-
+    mobile: "0123456789",
+    birthday: "01/01/2000", 
+    phoneNumber: "0123456789",
+    address: "ABC Street",
+    postcode: "100000",
+    province: "Hanoi",
+    district: "",
+    ward: "",
+    gender: "Female",});
   const [editing, setEditing] = useState(false);
 
   // State lưu giá trị chỉnh sửa tạm thời

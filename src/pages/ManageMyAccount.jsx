@@ -8,18 +8,15 @@ const [user, setUser] = useState({
   fullName: "Hieu Nguyen",
   email: "HieuNguyen@gmail.com",
   mobile: "0123456789",
-  birthday: "01/01/2000"});
-const [addresses, setAddresses] = useState([
-    {
-      fullName: "Hieu Nguyen",
-      phoneNumber: "0123456789",
-      address: "ABC Street",
-      postcode: "100000",
-      province: "Hanoi",
-      district: "",
-      ward: "",
-    },
-]);
+  birthday: "01/01/2000", 
+  phoneNumber: "0123456789",
+  address: "ABC Street",
+  postcode: "100000",
+  province: "Hanoi",
+  district: "",
+  ward: "",
+  gender: "Female",});
+
   return (
     <>
       <Navbar />
@@ -46,9 +43,9 @@ const [addresses, setAddresses] = useState([
                   <p><strong>Mobile: </strong></p>
                 </div>
                 <div className = "s1" style={{marginTop: "89px"}}>
-                  <p>{addresses[0].fullName}</p>
-                  <p>{addresses[0].address}</p>
-                  <p> {addresses[0].phoneNumber}</p>
+                  <p>{user.fullName}</p>
+                  <p>{user.address}</p>
+                  <p> {user.phoneNumber}</p>
                 </div>
               
               </div>
@@ -106,9 +103,7 @@ const Sidebar = () => {
         </li>
       </ul>
       <hr />
-      <Link to="/" className="nav-link text-danger">
-        <FaSignOutAlt className="me-2" /> Logout
-      </Link>
+      
          
     </div>
   );
